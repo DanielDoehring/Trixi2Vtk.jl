@@ -81,9 +81,7 @@ function read_datafile(filename::String)
     index = 1
     while haskey(file, "node_variables_$index")
       varname = read(attributes(file["node_variables_$index"])["name"])
-      nodedata = read(file["node_variables_$index"])
-      #node_variables[varname] = Array{Float64}(undef, ntuple(_ -> n_nodes, ndims_)..., n_elements)
-      node_variables[varname] = nodedata
+      node_variables[varname] = read(file["node_variables_$index"])
       index +=1
     end
 
