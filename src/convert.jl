@@ -696,7 +696,6 @@ function add_celldata!(vtk_celldata, mesh::P4estMesh, verbose,
   for tree in Trixi.unsafe_wrap_sc(Trixi.P4est.p4est_tree_t, unsafe_load(mesh.p4est).trees)
     h = h_min_per_element[cell_counter]
 
-    # Beyond linear scaling of timestep
     level = findfirst(x -> x < h_min / h, dtRatios)
     # Catch case that cell is "too coarse" for method with fewest stage evals
     if level === nothing
